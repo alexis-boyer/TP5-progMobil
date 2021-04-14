@@ -31,22 +31,13 @@ public class MainActivity extends AppCompatActivity implements DetecteurDeClicSu
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager=new GridLayoutManager(this,2,GridLayoutManager.VERTICAL, false);
+        mLayoutManager=new GridLayoutManager(this,1,GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MonRecyclerViewAdapter(getDataSource());
         mRecyclerView.setAdapter(mAdapter);
         mcoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         //RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, R.drawable.divider);
         //mRecyclerView.addItemDecoration(itemDecoration);
-
-        ((GridLayoutManager)mLayoutManager) .setSpanSizeLookup(
-                new GridLayoutManager.SpanSizeLookup() {
-
-                    @Override
-                    public int getSpanSize(int arg0) {
-                        return (arg0 % 3) == 0 ? 2 : 1;
-                    }
-                });
     }
 
     private ArrayList<Donnee> getDataSource() {
